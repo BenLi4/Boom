@@ -16,20 +16,24 @@ public class LinearEquation {
     public double slope() {
         double a = x2 - x1;
         double b = y2 - y1;
-        return b / a;
+        return roundedToHundredth(b / a);
     }
     public double yIntercept() {
         double a = slope();
         double b = x1 * a;
-        return y1 - b;
+        return roundedToHundredth(y1 - b);
     }
     public String equation() {
         int a = x2 - x1;
         int b = y2 - y1;
         int c = b / a;
         double d = yIntercept();
+        String x = "" + d;
+        if (x.substring(0, 1).equals("-")) {
+            d = Math.abs(d);
+        }
         if (y1 == y2) {
-            return "y = " + y1;
+            return "y = " + roundedToHundredth(y1);
         }
         if (d % 1 == 0.0) {
             int e = (int) yIntercept();
